@@ -35,7 +35,15 @@
     <div class='col-lg-5'>
       <h4 class='brand'>Shipping Option</h4>
       <div class='shipping-options well'>
-        <span class='brand'>:( Please implement me</span>
+        <span class='brand'>
+          <% @response.each do |k,v| %>
+            <h3> <%= k %> </h4>
+              <ul>
+            <li> price: $<%= v["price"].to_f/100 %> </li>
+            <li> estimated delivery: <%= v["delivery"] ? v["delivery"] : "Not Available" %> </li>
+            </ul>
+          <% end %>
+        </span>
       </div>
       <%= f.submit "Checkout", class: "btn btn-success btn-block" %>
     </div>
