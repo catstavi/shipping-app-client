@@ -16,7 +16,7 @@ class CartController < ApplicationController
                               city: current_order.address[:city],
                               postal_code: current_order.address[:postal_code]},
                               package: { weight: total_weight } }
-      response = HTTParty.get('http://localhost:3000/rates?', query: query)
+      response = HTTParty.get('http://cate-ship-api.herokuapp.com/rates?', query: query)
       @ship_options = response.collect do |k,v|
         ShipOption.create(name: k, price: v["price"], delivery: v["delivery"])
       end
