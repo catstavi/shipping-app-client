@@ -36,12 +36,17 @@
       <h4 class='brand'>Shipping Option</h4>
       <div class='shipping-options well'>
         <span class='brand'>
-          <% @response.each do |k,v| %>
-            <h3> <%= k %> </h4>
-              <ul>
-            <li> price: $<%= v["price"].to_f/100 %> </li>
-            <li> estimated delivery: <%= v["delivery"] ? v["delivery"] : "Not Available" %> </li>
-            </ul>
+          <% @ship_options.each do |option| %>
+              <%= f.label :ship_option do %>
+                  <div class= "ship_radio_button" id= "<%= option.price %>" style = "display:inline">
+                    <%= f.radio_button :ship_option, option.id %>
+                  </div>
+                  <%= option.name %>
+                  <ul class ="ship_opt_details">
+                <li> price: $<%= Money.new(option.price.to_f) %> </li>
+                <li> estimated delivery: <%= option.delivery ? option.delivery : "Not Available" %> </li>
+                </ul>
+              <% end %>
           <% end %>
         </span>
       </div>

@@ -46,7 +46,7 @@
   <tbody>
     <tr>
       <td width="99%" colspan=2></td>
-      <td class='brand'>Total:<%= current_order.total.format %></td>
+      <td class='brand'>Total: <span style="display:inline" class='total' id= '<%=current_order.total.to_f*100%>'><%= current_order.total.format %></span></td>
     </tr>
   </tbody>
 </table>

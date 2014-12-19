@@ -1,4 +1,10 @@
-FactoryGirl.define do  factory :credit_card do
+FactoryGirl.define do  factory :ship_option do
+    name "MyString"
+price ""
+delivery ""
+tracking "MyString"
+  end
+  factory :credit_card do
     name "MyString"
 number "MyString"
 expiration "MyString"

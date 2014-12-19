@@ -3,11 +3,13 @@ class Order < ActiveRecord::Base
   has_many :products, through: :items
   has_one :address
   has_one :credit_card
+  has_one :ship_option
   validates :number, uniqueness: true
   before_create :set_number
 
   def total
-    Money.new items.sum(:total_cents)
+    Money.new ( ship_option != nil ? items.sum(:total_cents) + ship_option.price : items.sum(:total_cents))
+
   end
 
   private

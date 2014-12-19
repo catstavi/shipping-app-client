@@ -9,5 +9,12 @@
         <td><%= item.total.format %></td>
       </tr>
     <% end %>
+    <% if order.ship_option %>
+      <tr>
+        <td width="100"> </td>
+        <td class='brand' width= '75%'> <%= order.ship_option.name %> </td>
+        <td style='text-align:right'> <%= Money.new(order.ship_option.price).format %> </td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
